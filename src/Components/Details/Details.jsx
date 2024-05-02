@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Meaning from "./Meaning";
 
 function Details() {
 	const { word } = useParams();
@@ -12,7 +13,7 @@ function Details() {
 	}, []);
 
 	// data[0] && console.log(data[0]["phonetics"])
-	data[0] && data[0]["phonetics"].map((value) => console.log(value));
+	// data[0] && data[0]["phonetics"].map((value) => console.log(value));
 
 	return (
 		<div className="p-6 text-white">
@@ -21,7 +22,7 @@ function Details() {
 					<h1 className="text-3xl text-center font-semibold text-gray-200 mb-8">
 						Dictionary
 					</h1>
-					<div className="word">
+					<div>
 						<h2 className="text-2xl font-bold mb-4">
 							{data[0]["word"]}
 						</h2>
@@ -33,49 +34,21 @@ function Details() {
 										return `[${value["text"]}] \u00A0\u00A0`;
 									}
 								})}
-						</div>
-						<div className="origin text-lg mb-4">
-							Origin: early 19th century: variant of earlier hollo
-							; related to holla.
-						</div>
-					</div>
-					<div className="meanings">
-						<div className="meaning border-t border-gray-300 pt-4">
-							<div className="part-of-speech font-semibold">
-								Exclamation
-							</div>
-							<div className="definition text-lg mb-2">
-								Used as a greeting or to begin a phone
-								conversation.
-							</div>
-							<div className="example text-gray-600">
-								Example: hello there, Katie!
-							</div>
-						</div>
-						<div className="meaning border-t border-gray-300 pt-4">
-							<div className="part-of-speech font-semibold">
-								Noun
-							</div>
-							<div className="definition text-lg mb-2">
-								An utterance of ‘hello’; a greeting.
-							</div>
-							<div className="example text-gray-600">
-								Example: she was getting polite nods and hellos
-								from people
-							</div>
-						</div>
-						<div className="meaning border-t border-gray-300 pt-4">
-							<div className="part-of-speech font-semibold">
-								Verb
-							</div>
-							<div className="definition text-lg mb-2">
-								Say or shout ‘hello’.
-							</div>
-							<div className="example text-gray-600">
-								Example: I pressed the phone button and helloed
-							</div>
+							<audio
+								className="p-2 my-2"
+								src={data[0]["phonetics"][0]["audio"]}
+								controls
+							>
+								Pronunciation
+							</audio>
 						</div>
 					</div>
+					{data[0]["meanings"].map((value, key) => {
+						// console.log(value,key);
+						if (value["partOfSpeech"]) {
+							return <Meaning key={key} meaning={value} />;
+						}
+					})}
 				</div>
 			)}
 		</div>
