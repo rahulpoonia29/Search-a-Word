@@ -1,12 +1,11 @@
 import {
 	Route,
-	Router,
 	RouterProvider,
 	createBrowserRouter,
 	createRoutesFromElements,
 } from "react-router-dom";
 import Layout from "./Routes";
-import Navbar from "./Components/Navbar/Navbar";
+
 import Details from "./Components/Details/Details";
 
 function App() {

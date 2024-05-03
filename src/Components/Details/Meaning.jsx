@@ -1,10 +1,6 @@
 import React from "react";
 
 function Meaning({ meaning }) {
-	{
-		console.log(meaning["definitions"]);
-	}
-
 	return (
 		<div className="meaning border-t border-gray-300 pt-4 mt-4">
 			<div className="text-xl font-semibold text-gray-200">
@@ -12,9 +8,8 @@ function Meaning({ meaning }) {
 			</div>
 			<ol className="flex flex-col gap-5 mt-3 text-gray-300 list-disc ml-5">
 				{meaning["definitions"].map((value, key) => {
-					console.log(value);
 					return (
-						<li>
+						<li key={key}>
 							<div className="text-md text-gray-300">
 								{value["definition"]}
 							</div>

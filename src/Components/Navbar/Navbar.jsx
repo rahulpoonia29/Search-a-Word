@@ -1,10 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
+	const [search, setSearch] = useState("");
+	const navigate = useNavigate();
 	return (
 		<nav className="bg-gray-100 border-gray-200 dark:bg-zinc-900">
-			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 py-6">
+			<div className="max-w-screen-xl flex flex-col items-center justify-center gap-3 sm:justify-between sm:flex-row mx-auto p-10 py-6">
 				<Link
 					href=""
 					className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -15,7 +17,10 @@ function Navbar() {
 				</Link>
 
 				<div className="flex md:order-2 relative">
-					<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+					<div
+						to={`/search/${search}`}
+						className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+					>
 						<svg
 							className="w-4 h-4 text-gray-700 dark:text-gray-200"
 							aria-hidden="true"
@@ -37,6 +42,15 @@ function Navbar() {
 						id="search-navbar"
 						className="block w-full p-2 ps-10 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 						placeholder="Search a Word"
+						value={search}
+						onChange={(e) => {
+							setSearch(e.target.value);
+						}}
+						onKeyDown={(e) => {
+							if (e.key === "Enter") {
+								return navigate(`/search/${search}`);
+							}
+						}}
 					/>
 				</div>
 			</div>

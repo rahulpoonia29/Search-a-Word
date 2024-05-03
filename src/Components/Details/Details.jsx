@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import Meaning from "./Meaning";
 
 function Details() {
 	const { word } = useParams();
+
 
 	const [data, setData] = useState([]);
 	useEffect(() => {
 		fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
 			.then(async (response) => await response.json())
 			.then((data) => setData(data));
-	}, []);
+	}, [word]);
 
 	return (
 		<div className="p-6 text-white bg-slate-800">
