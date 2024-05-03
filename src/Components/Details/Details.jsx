@@ -12,13 +12,10 @@ function Details() {
 			.then((data) => setData(data));
 	}, []);
 
-	// data[0] && console.log(data[0]["phonetics"])
-	// data[0] && data[0]["phonetics"].map((value) => console.log(value));
-
 	return (
-		<div className="p-6 text-white">
+		<div className="p-6 text-white bg-slate-800">
 			{data[0] && (
-				<div className="container mx-auto max-w-3xl px-4 py-8">
+				<div className="container mx-auto max-w-5xl px-4 py-8">
 					<h1 className="text-3xl text-center font-semibold text-gray-200 mb-8">
 						Dictionary
 					</h1>
@@ -26,16 +23,18 @@ function Details() {
 						<h2 className="text-2xl font-bold mb-4">
 							{data[0]["word"]}
 						</h2>
-						<div className="text-md mb-2 text-gray-300">
+						<div className="text-lg mb-2 text-gray-200">
 							Pronunciation: &nbsp;
-							{data[0] &&
-								data[0]["phonetics"].map((value) => {
-									if (value["text"]) {
-										return `[${value["text"]}] \u00A0\u00A0`;
-									}
-								})}
+							<span className="text-sm">
+								{data[0] &&
+									data[0]["phonetics"].map((value) => {
+										if (value["text"]) {
+											return `[${value["text"]}] \u00A0\u00A0`;
+										}
+									})}
+							</span>
 							<audio
-								className="p-2 my-2"
+								className="p-2 my-2 bg-gray-200 rounded-xl"
 								src={data[0]["phonetics"][0]["audio"]}
 								controls
 							>
@@ -44,7 +43,6 @@ function Details() {
 						</div>
 					</div>
 					{data[0]["meanings"].map((value, key) => {
-						// console.log(value,key);
 						if (value["partOfSpeech"]) {
 							return <Meaning key={key} meaning={value} />;
 						}
