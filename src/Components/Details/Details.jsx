@@ -16,7 +16,7 @@ function Details() {
 		<div className="p-6 text-white bg-slate-800">
 			{data[0] && (
 				<div className="container mx-auto max-w-5xl px-4 py-8">
-					<h1 className="text-3xl text-center font-semibold text-gray-200 mb-8">
+					<h1 className="text-3xl text-center font-bold text-gray-200 mb-8">
 						Dictionary
 					</h1>
 					<div>
