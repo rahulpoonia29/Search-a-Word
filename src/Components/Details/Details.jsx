@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Meaning from "./Meaning";
 
 function Details() {
 	const { word } = useParams();
-
 
 	const [data, setData] = useState([]);
 	useEffect(() => {
