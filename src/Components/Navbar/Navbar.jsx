@@ -11,7 +11,7 @@ function Navbar() {
 					href=""
 					className="flex items-center space-x-3 rtl:space-x-reverse"
 				>
-					<span className="self-center text-3xl font-pacifico font-semibold whitespace-nowrap text-black dark:text-white">
+					<span className="self-center text-3xl font-pacifico  whitespace-nowrap text-black dark:text-white">
 						Search a Word
 					</span>
 				</Link>
